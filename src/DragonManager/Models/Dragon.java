@@ -14,7 +14,7 @@ public class Dragon implements JsonSerializable, Inferior {
     public int lifeSpan;
     public String name;
 
-    public Dragon(Object name, Object o, DragonRace race){}
+    public Dragon(){}
 
     public Dragon(String name, int lifeSpan, DragonRace race) {
         this.name = name;
@@ -66,9 +66,9 @@ public class Dragon implements JsonSerializable, Inferior {
             var json = (JSONObject) itr.next();
 
 
-            Dragon d = new Dragon(json.get("name"),
-                                json.get("life-span"),
-                                DragonRaceUtilities.convetStringToDataEnum((String) json.get("race"))
+            Dragon d = new Dragon((String)json.get("name"),
+                                    Integer.parseInt((String)json.get("life-span")),
+                                    DragonRaceUtilities.convetStringToDataEnum((String) json.get("race"))
                                 );
 
             result.add(d);
